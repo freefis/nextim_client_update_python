@@ -32,12 +32,11 @@ all_diff_list   = fo.basic_diff(new,{})
 
 fo.all_to_temp(all_diff_list)
 db.update_all_index(all_diff_list)
-sys.exit()
 
 
 # sync db
 db.pub_new(latest_version)    
-db.update_index(latest_version,basic_diff)
+db.update_index(latest_version,basic_diff_list)
                               
 
 QuerySet = db.get_all()

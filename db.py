@@ -41,16 +41,16 @@ class Mysql:
         for abs_path in _all_diff_list:
             basename = os.path.basename(abs_path)
 
-            print abs_path
             download_path = "temp_all/%s" % ( basename )
             install_path  = "webim/"+abs_path.split("/webim/")[1]
             all_diff_dict[install_path] = download_path
         del _all_diff_list
 
-        pathindex = simplejson.loads(all_diff_dict)
-        version = "force_update_all"
-        print pathindex
-        self._put(version,new_pathindex)
+        pathindex = simplejson.dumps(all_diff_dict)
+        handle = open("../temp_all/index","wb")
+        handle.write(pathindex)
+        handle.close()
+
         
         
 
@@ -63,7 +63,7 @@ class Mysql:
             install_path  = "webim/"+abs_path.split("/webim/")[1]
             basic_diff_dict[install_path] = download_path
 
-        del _basic_diff # clean var                                        
+        del _basic_diff_list # clean var                                        
         #print basic_diff_dict
 
         for Query in self._get_all():     
