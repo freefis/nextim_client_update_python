@@ -13,7 +13,7 @@ import os
 import commands
 import simplejson
 
-ROOT = os.path.dirname( os.path.dirname(__file__) )
+ROOT = os.path.dirname( os.path.dirname( os.path.abspath(__file__) ) )
 
 
 
@@ -38,7 +38,7 @@ def get_all_file(dir):
 
 def all_to_temp(all_diff_list):
     for abs_path in all_diff_list:
-        cp(abs_path, "../temp_all")
+        cp(abs_path, ROOT+"/temp_all")
 
 
 
@@ -102,7 +102,7 @@ def update_all_version(QuerySet):
         # copy file from temp_all
         for abs_path in simplejson.loads(pathindex):
             filename = os.path.basename(abs_path)
-            cp("temp_all/"+filename,"version_"+version+"/"+filename+"_d")     
+            cp("temp_all/"+filename,"version_"+version+"/"+filename")     
             
 
 

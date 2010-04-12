@@ -1,4 +1,5 @@
 #!/usr/bin/env python
 import os.path
-print __file__
-print  os.path.dirname(__file__) 
+ROOT = os.path.dirname( os.path.dirname( os.path.abspath(__file__) ) )
+print ROOT
+

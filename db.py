@@ -12,6 +12,10 @@ import MySQLdb as mysql
 import simplejson
 import os
 
+ROOT = os.path.dirname( os.path.dirname( os.path.abspath(__file__) ) )
+
+
+
 class Mysql:
     def __init__(self,host,user,passwd,db):
         self.conn = mysql.Connect(host=host,user=user,passwd=passwd,db=db,charset="utf8")
@@ -47,7 +51,7 @@ class Mysql:
         del _all_diff_list
 
         pathindex = simplejson.dumps(all_diff_dict)
-        handle = open("../temp_all/index","wb")
+        handle = open(ROOT+"/temp_all/index","wb")
         handle.write(pathindex)
         handle.close()
 
@@ -80,7 +84,7 @@ class Mysql:
 
                                        
 # for called  while imported
-_start =  Mysql(host="localhost",user="root",passwd="1",db="nextim_update")
+_start =  Mysql(host="localhost",user="root",passwd="",db="nextim_update")
 get_all = _start._get_all
 pub_new = _start.pub_new
 update_index = _start.upadte_index

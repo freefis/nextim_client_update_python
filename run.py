@@ -13,8 +13,7 @@ import simplejson
 import os
 import fo,db
 
-_abspath = os.path.abspath(__file__)
-ROOT = os.path.dirname( os.path.dirname( _abspath ) )
+ROOT = os.path.dirname( os.path.dirname( os.path.abspath(__file__) ) )
 
 
 latest_version = sys.argv[1]
